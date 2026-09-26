@@ -562,6 +562,65 @@
   };
 
   /**
+   * Accessible Smooth Scrolling with Retained Focus Controller
+   * Handles keyboard focus transfer, URL hash synchronization, and screen-reader announcements
+   */
+  const initSmoothScroll = () => {
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    const a11yAnnouncer = document.getElementById('a11y-announcer');
+
+    anchorLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const targetId = link.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+
+        const targetEl = document.querySelector(targetId);
+        if (!targetEl) return;
+
+        event.preventDefault();
+
+        // Respect user motion preference
+        const scrollBehavior = AppState.reducedMotion ? 'auto' : 'smooth';
+        targetEl.scrollIntoView({
+          behavior: scrollBehavior,
+          block: 'start'
+        });
+
+        // Sync browser history state
+        if (history.pushState) {
+          history.pushState(null, '', targetId);
+        } else {
+          window.location.hash = targetId;
+        }
+
+        // Transfer keyboard/screen reader focus securely
+        if (!targetEl.hasAttribute('tabindex')) {
+          targetEl.setAttribute('tabindex', '-1');
+        }
+        targetEl.focus({ preventScroll: true });
+
+        // Announce section navigation
+        if (a11yAnnouncer) {
+          const heading = targetEl.querySelector('h1, h2, h3') || targetEl;
+          const sectionLabel = heading.textContent ? heading.textContent.trim() : targetId.replace('#', '');
+          a11yAnnouncer.textContent = `Navegado a la sección ${sectionLabel}.`;
+        }
+      });
+    });
+  };
+
+  /**
+   * Footer & Dynamic Metadata Controller
+   * Synchronizes dynamic year and back-to-top status
+   */
+  const initFooter = () => {
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) {
+      yearSpan.textContent = String(new Date().getFullYear());
+    }
+  };
+
+  /**
    * Main Application Lifecycle Bootstrap
    * Safe execution guaranteed after DOM is fully parsed
    */
@@ -575,7 +634,8 @@
     initProjectFilter();
     initTokenClipboard();
     initContactForm();
-    // Subsequent component controllers will be registered here across phases
+    initSmoothScroll();
+    initFooter();
   };
 
   // Safe DOM ready execution
