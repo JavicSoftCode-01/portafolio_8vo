@@ -193,6 +193,65 @@
   };
 
   /**
+   * Metrics Counting Animation (Sobre Mí)
+   * Progressive numeric interpolation using requestAnimationFrame and cubic-out easing
+   * Bypasses counting immediately if user prefers reduced motion
+   */
+  const initMetricsCounter = () => {
+    const metricValues = document.querySelectorAll('.metric-value[data-target]');
+    if (!metricValues.length) return;
+
+    const animateNumber = (element) => {
+      const target = parseInt(element.getAttribute('data-target') || '0', 10);
+      const suffix = element.getAttribute('data-suffix') || '';
+
+      if (AppState.reducedMotion || target === 0) {
+        element.textContent = `${target}${suffix}`;
+        return;
+      }
+
+      const duration = 1200; // ms
+      const startTime = performance.now();
+
+      const updateFrame = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Cubic ease out
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(easeOut * target);
+
+        element.textContent = `${current}${suffix}`;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateFrame);
+        } else {
+          element.textContent = `${target}${suffix}`;
+        }
+      };
+
+      requestAnimationFrame(updateFrame);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateNumber(entry.target);
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      metricValues.forEach((el) => observer.observe(el));
+    } else {
+      metricValues.forEach((el) => animateNumber(el));
+    }
+  };
+
+  /**
    * Main Application Lifecycle Bootstrap
    * Safe execution guaranteed after DOM is fully parsed
    */
@@ -201,6 +260,7 @@
     initThemeController();
     initMobileNavigation();
     initHeroMicrointeractions();
+    initMetricsCounter();
     // Subsequent component controllers will be registered here across phases
   };
 
@@ -211,4 +271,5 @@
     initApp();
   }
 })();
+
 
