@@ -305,6 +305,70 @@
   };
 
   /**
+   * Dynamic Projects Filtering Controller
+   * Real-time client filtering by category with ARIA status updates and animated transitions
+   */
+  const initProjectFilter = () => {
+    const filterToolbar = document.getElementById('project-filters');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    if (!filterToolbar || !filterButtons.length || !projectCards.length) return;
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetCategory = btn.getAttribute('data-filter');
+        if (!targetCategory) return;
+
+        // Update active classes and ARIA pressed states
+        filterButtons.forEach((b) => {
+          const isSelected = b === btn;
+          b.classList.toggle('active-filter', isSelected);
+          b.setAttribute('aria-pressed', String(isSelected));
+        });
+
+        // Filter cards with smooth opacity / display transition
+        projectCards.forEach((card) => {
+          const cardCategory = card.getAttribute('data-category');
+          const isMatch = targetCategory === 'all' || cardCategory === targetCategory;
+
+          if (AppState.reducedMotion) {
+            if (isMatch) {
+              card.style.display = 'grid';
+              card.style.opacity = '1';
+              card.style.transform = 'none';
+              card.hidden = false;
+            } else {
+              card.style.display = 'none';
+              card.hidden = true;
+            }
+            return;
+          }
+
+          if (isMatch) {
+            card.hidden = false;
+            card.style.display = 'grid';
+            // Trigger reflow for transition
+            requestAnimationFrame(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'scale(1)';
+            });
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.97)';
+            setTimeout(() => {
+              if (card.style.opacity === '0') {
+                card.style.display = 'none';
+                card.hidden = true;
+              }
+            }, 250);
+          }
+        });
+      });
+    });
+  };
+
+  /**
    * Main Application Lifecycle Bootstrap
    * Safe execution guaranteed after DOM is fully parsed
    */
@@ -315,6 +379,7 @@
     initHeroMicrointeractions();
     initMetricsCounter();
     initSkillsProgressBars();
+    initProjectFilter();
     // Subsequent component controllers will be registered here across phases
   };
 
@@ -325,6 +390,7 @@
     initApp();
   }
 })();
+
 
 
 

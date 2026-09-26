@@ -633,6 +633,252 @@
         </div>
       </div>
     </section>
+
+    <!-- ==================== PROYECTOS DESTACADOS ==================== -->
+    <section class="projects-section" id="proyectos" aria-labelledby="projects-title">
+      <div class="container">
+        <!-- Section Top: Header and Filter Controls -->
+        <div class="projects-header-row">
+          <div class="section-header-compact">
+            <span class="section-tag" aria-hidden="true">// 03. TRABAJOS SELECCIONADOS</span>
+            <h2 id="projects-title" class="section-title">Proyectos Destacados</h2>
+          </div>
+
+          <!-- Filter Pills Toolbar -->
+          <div
+            class="filter-toolbar"
+            id="project-filters"
+            role="toolbar"
+            aria-label="Filtrar proyectos por categoría"
+          >
+            <button
+              class="filter-btn active-filter"
+              data-filter="all"
+              type="button"
+              aria-pressed="true"
+            >
+              Todos
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="webapp"
+              type="button"
+              aria-pressed="false"
+            >
+              Web Apps
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="designsystem"
+              type="button"
+              aria-pressed="false"
+            >
+              Design Systems
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="ecommerce"
+              type="button"
+              aria-pressed="false"
+            >
+              E-commerce
+            </button>
+          </div>
+        </div>
+
+        <!-- Project Cards Stack -->
+        <div class="projects-stack" id="projects-container">
+          <!-- Project 1: NovaFin Dashboard -->
+          <article
+            class="project-card"
+            data-category="webapp"
+            aria-labelledby="project-1-title"
+          >
+            <!-- Visual Column -->
+            <div class="project-visual-col">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFJ7srcHQGr1KE7qiSovoiW62ghiwJv2IMTBal6TBWwI14JvpKMAuSP5xhsYe7wPDy8awe4giP1o7Un-70ZdFcLzt8VgmefQEd3lwSfYRyOYcgMG_41g09A_JqLqgaGFOjs8W4BCRwndlq2Xr5Qr0GttZgAwA_-s1WdAvwyKEZDntIhUSdlZKKSDWfHnOI5AAMJFuXFK-ABO6Uj9ai1tEqKPyjlXEf3Ato0-4FVeokWa2L6hwu44cQjA"
+                alt="NovaFin Analytics Dashboard Fintech — Mockup en modo oscuro con gráficos de líneas púrpuras y balances financieros"
+                class="project-thumbnail"
+                loading="lazy"
+                width="700"
+                height="440"
+              >
+            </div>
+
+            <!-- Details Column -->
+            <div class="project-details-col">
+              <div class="project-content-upper">
+                <div class="project-meta-row">
+                  <span class="project-category-badge badge-secondary">Fintech Platform</span>
+                  <span class="project-year">2024</span>
+                </div>
+                <h3 id="project-1-title" class="project-title">
+                  NovaFin — Analytics Dashboard Fintech
+                </h3>
+                <p class="project-summary">
+                  Plataforma analítica financiera de alto rendimiento con gráficos en tiempo real, gestión de carteras y soporte multicurrency. Diseñada para procesar flujos intensivos con latencia sub-100ms.
+                </p>
+
+                <!-- Tech Tag Pills -->
+                <div class="project-tags-group">
+                  <span class="tech-tag">Next.js</span>
+                  <span class="tech-tag">TypeScript</span>
+                  <span class="tech-tag">Tailwind</span>
+                  <span class="tech-tag">Chart.js</span>
+                </div>
+              </div>
+
+              <!-- Action Links -->
+              <div class="project-actions-row">
+                <a
+                  href="#proyectos"
+                  class="btn btn-action-primary"
+                  aria-label="Ver demo interactiva de NovaFin"
+                >
+                  <span>Ver Demo</span>
+                  <span class="material-symbols-outlined action-icon" aria-hidden="true">open_in_new</span>
+                </a>
+                <a
+                  href="#proyectos"
+                  class="btn btn-action-secondary"
+                  aria-label="Ver repositorio de código de NovaFin"
+                >
+                  <span class="material-symbols-outlined action-icon" aria-hidden="true">terminal</span>
+                  <span>Ver Repositorio</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Aura Design System -->
+          <article
+            class="project-card"
+            data-category="designsystem"
+            aria-labelledby="project-2-title"
+          >
+            <!-- Visual Column -->
+            <div class="project-visual-col">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIhEcRUOhLS-IFG3-ArGlubCBlYsy1gUfeiBlrnaQazE8pD5U4wGH4U-o-fgNpj9nSnfNyOVvoWq9LvDDZHJpcnjex0cwV-80R4cd17uN1-ZZ8wlXyYbYnima8TBhOzhBIajKAyV6qLIKaybBAyC8EM_b5wfTftT3zQZRG5AlQTUMRltemup71BQRUBb87nNaCL3HtYd9Rh4qaI_uAPk2_ehyUR2ouf6Sivz8wvSY2VIUFNrLVJ2sZmQ"
+                alt="Aura Design System and Token Studio — Pantalla de editor de tokens de diseño con paleta cromática y tipografías Inter"
+                class="project-thumbnail"
+                loading="lazy"
+                width="700"
+                height="440"
+              >
+            </div>
+
+            <!-- Details Column -->
+            <div class="project-details-col">
+              <div class="project-content-upper">
+                <div class="project-meta-row">
+                  <span class="project-category-badge badge-primary">Design Tooling</span>
+                  <span class="project-year">2023</span>
+                </div>
+                <h3 id="project-2-title" class="project-title">
+                  Aura — Design System &amp; Token Studio
+                </h3>
+                <p class="project-summary">
+                  Herramienta de sincronización de tokens y biblioteca de componentes reutilizables con soporte para modo oscuro automático. Integración directa con Figma REST API y exportación a Tailwind config.
+                </p>
+
+                <!-- Tech Tag Pills -->
+                <div class="project-tags-group">
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">Storybook</span>
+                  <span class="tech-tag">Figma API</span>
+                  <span class="tech-tag">Turborepo</span>
+                </div>
+              </div>
+
+              <!-- Action Links -->
+              <div class="project-actions-row">
+                <a
+                  href="#proyectos"
+                  class="btn btn-action-primary"
+                  aria-label="Ver demo interactiva de Aura Design System"
+                >
+                  <span>Ver Demo</span>
+                  <span class="material-symbols-outlined action-icon" aria-hidden="true">open_in_new</span>
+                </a>
+                <a
+                  href="#proyectos"
+                  class="btn btn-action-secondary"
+                  aria-label="Ver repositorio de código de Aura Design System"
+                >
+                  <span class="material-symbols-outlined action-icon" aria-hidden="true">terminal</span>
+                  <span>Ver Repositorio</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Møbel Studio E-commerce -->
+          <article
+            class="project-card"
+            data-category="ecommerce"
+            aria-labelledby="project-3-title"
+          >
+            <!-- Visual Column -->
+            <div class="project-visual-col">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD88um4UsF1uzg4B5B6iJJVvnunrmpzn27c1XZCnEbhXQFdieGTf-ewaSxORZYy5lsuBksT9kJyC8u6W9NkWvyaE-fqpVLgxxxBqpisPS-tJeMOjUCpDUVbhKBOvbGjWh0nRiwDhzWht8OS6qgKeKOrqWrjCj3fBK99nzCzJUjBDK-_6NYefUEFQNHR1nXJKdq90Hcv0s_ZJB3P88-f05pBim-Mjz9OP4Ozo9BcmnsKQMTo0D-wYWWchA"
+                alt="Møbel Studio Minimalist Scandinavian E-commerce — Vista editorial de tienda web de cerámicas nórdicas con tipografía sans serif"
+                class="project-thumbnail"
+                loading="lazy"
+                width="700"
+                height="440"
+              >
+            </div>
+
+            <!-- Details Column -->
+            <div class="project-details-col">
+              <div class="project-content-upper">
+                <div class="project-meta-row">
+                  <span class="project-category-badge badge-secondary">E-Commerce • SSR</span>
+                  <span class="project-year">2023</span>
+                </div>
+                <h3 id="project-3-title" class="project-title">
+                  Møbel Studio — E-commerce Minimalista
+                </h3>
+                <p class="project-summary">
+                  Tienda de diseño nórdico con navegación instantánea, checkout optimizado y una experiencia visual ultra fluida inspirada en la arquitectura escandinava con transiciones orquestadas.
+                </p>
+
+                <!-- Tech Tag Pills -->
+                <div class="project-tags-group">
+                  <span class="tech-tag">Next.js 14</span>
+                  <span class="tech-tag">Stripe</span>
+                  <span class="tech-tag">Framer Motion</span>
+                  <span class="tech-tag">Tailwind</span>
+                </div>
+              </div>
+
+              <!-- Action Links -->
+              <div class="project-actions-row">
+                <a
+                  href="#proyectos"
+                  class="btn btn-action-primary"
+                  aria-label="Ver demo interactiva de Møbel Studio"
+                >
+                  <span>Ver Demo</span>
+                  <span class="material-symbols-outlined action-icon" aria-hidden="true">open_in_new</span>
+                </a>
+                <a
+                  href="#proyectos"
+                  class="btn btn-action-secondary"
+                  aria-label="Ver repositorio de código de Møbel Studio"
+                >
+                  <span class="material-symbols-outlined action-icon" aria-hidden="true">terminal</span>
+                  <span>Ver Repositorio</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 </body>
 </html>
