@@ -423,6 +423,145 @@
   };
 
   /**
+   * HTML Sanitization Utility
+   * Prevents XSS attacks before reflecting any user-supplied content into the DOM
+   */
+  const escapeHtml = (str) => {
+    if (typeof str !== 'string') return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  };
+
+  /**
+   * Accessible Contact Form Controller
+   * Real-time client-side validation, anti-XSS sanitization, and state announcements
+   */
+  const initContactForm = () => {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const messageInput = document.getElementById('contact-message');
+    const submitBtn = document.getElementById('btn-submit-contact');
+    const feedbackBanner = document.getElementById('form-feedback');
+    const feedbackText = document.getElementById('feedback-text');
+    const a11yAnnouncer = document.getElementById('a11y-announcer');
+
+    const nameError = document.getElementById('name-error');
+    const emailError = document.getElementById('email-error');
+    const messageError = document.getElementById('message-error');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const setFieldError = (inputEl, errorEl, message) => {
+      inputEl.classList.add('is-invalid');
+      inputEl.setAttribute('aria-invalid', 'true');
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.classList.add('visible');
+      }
+    };
+
+    const clearFieldError = (inputEl, errorEl) => {
+      inputEl.classList.remove('is-invalid');
+      inputEl.removeAttribute('aria-invalid');
+      if (errorEl) {
+        errorEl.textContent = '';
+        errorEl.classList.remove('visible');
+      }
+    };
+
+    [nameInput, emailInput, messageInput].forEach((input) => {
+      if (!input) return;
+      input.addEventListener('input', () => {
+        const errSpan = document.getElementById(`${input.name}-error`);
+        clearFieldError(input, errSpan);
+      });
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      let isValid = true;
+      let firstInvalidField = null;
+
+      // Validate Name
+      const nameVal = nameInput ? nameInput.value.trim() : '';
+      if (!nameVal || nameVal.length < 2) {
+        setFieldError(nameInput, nameError, 'Por favor, introduce tu nombre completo.');
+        isValid = false;
+        if (!firstInvalidField) firstInvalidField = nameInput;
+      } else {
+        clearFieldError(nameInput, nameError);
+      }
+
+      // Validate Email
+      const emailVal = emailInput ? emailInput.value.trim() : '';
+      if (!emailVal || !emailRegex.test(emailVal)) {
+        setFieldError(emailInput, emailError, 'Introduce un correo profesional válido.');
+        isValid = false;
+        if (!firstInvalidField) firstInvalidField = emailInput;
+      } else {
+        clearFieldError(emailInput, emailError);
+      }
+
+      // Validate Message
+      const messageVal = messageInput ? messageInput.value.trim() : '';
+      if (!messageVal || messageVal.length < 10) {
+        setFieldError(messageInput, messageError, 'El mensaje debe tener al menos 10 caracteres.');
+        isValid = false;
+        if (!firstInvalidField) firstInvalidField = messageInput;
+      } else {
+        clearFieldError(messageInput, messageError);
+      }
+
+      if (!isValid) {
+        if (firstInvalidField) firstInvalidField.focus();
+        if (a11yAnnouncer) {
+          a11yAnnouncer.textContent = 'El formulario contiene errores. Por favor, corrígelos antes de enviar.';
+        }
+        return;
+      }
+
+      // Sanitize inputs
+      const safeName = escapeHtml(nameVal);
+
+      // Simulate secure submission
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.querySelector('.btn-text').textContent = 'Enviando...';
+      }
+
+      setTimeout(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.querySelector('.btn-text').textContent = 'Enviar Mensaje';
+        }
+
+        if (feedbackBanner && feedbackText) {
+          feedbackText.innerHTML = `¡Mensaje recibido con éxito, <strong>${safeName}</strong>! Me pondré en contacto contigo hoy mismo.`;
+          feedbackBanner.classList.remove('hidden');
+        }
+
+        if (a11yAnnouncer) {
+          a11yAnnouncer.textContent = `Mensaje enviado correctamente por ${safeName}.`;
+        }
+
+        form.reset();
+
+        setTimeout(() => {
+          if (feedbackBanner) feedbackBanner.classList.add('hidden');
+        }, 8000);
+      }, 700);
+    });
+  };
+
+  /**
    * Main Application Lifecycle Bootstrap
    * Safe execution guaranteed after DOM is fully parsed
    */
@@ -435,6 +574,7 @@
     initSkillsProgressBars();
     initProjectFilter();
     initTokenClipboard();
+    initContactForm();
     // Subsequent component controllers will be registered here across phases
   };
 
@@ -445,6 +585,7 @@
     initApp();
   }
 })();
+
 
 
 
