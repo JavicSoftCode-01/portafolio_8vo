@@ -369,6 +369,60 @@
   };
 
   /**
+   * Token Clipboard Copy Controller (Sistema de Diseño)
+   * Copies HEX values to clipboard and broadcasts status via ARIA live region
+   */
+  const initTokenClipboard = () => {
+    const copyButtons = document.querySelectorAll('.btn-copy-token[data-copy]');
+    const a11yAnnouncer = document.getElementById('a11y-announcer');
+
+    const copyToken = async (hexValue, buttonEl) => {
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(hexValue);
+        } else {
+          // Fallback for non-secure contexts
+          const tempInput = document.createElement('input');
+          tempInput.value = hexValue;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+        }
+
+        // Visual Feedback on trigger button
+        const originalHtml = buttonEl.innerHTML;
+        buttonEl.innerHTML = `
+          <span class="material-symbols-outlined copy-icon" aria-hidden="true" style="color: #10B981;">check</span>
+          <span style="color: #10B981;">¡Copiado!</span>
+        `;
+        buttonEl.classList.add('btn-copied');
+
+        // Accessible Screen Reader Announcement
+        if (a11yAnnouncer) {
+          a11yAnnouncer.textContent = `Token de color ${hexValue} copiado al portapapeles.`;
+        }
+
+        setTimeout(() => {
+          buttonEl.innerHTML = originalHtml;
+          buttonEl.classList.remove('btn-copied');
+        }, 1800);
+      } catch (err) {
+        if (a11yAnnouncer) {
+          a11yAnnouncer.textContent = `No se pudo copiar el token ${hexValue}.`;
+        }
+      }
+    };
+
+    copyButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const hex = btn.getAttribute('data-copy');
+        if (hex) copyToken(hex, btn);
+      });
+    });
+  };
+
+  /**
    * Main Application Lifecycle Bootstrap
    * Safe execution guaranteed after DOM is fully parsed
    */
@@ -380,6 +434,7 @@
     initMetricsCounter();
     initSkillsProgressBars();
     initProjectFilter();
+    initTokenClipboard();
     // Subsequent component controllers will be registered here across phases
   };
 
@@ -390,6 +445,7 @@
     initApp();
   }
 })();
+
 
 
 

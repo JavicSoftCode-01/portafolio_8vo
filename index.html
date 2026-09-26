@@ -879,6 +879,605 @@
         </div>
       </div>
     </section>
+
+    <!-- ==================== SISTEMA DE DISEÑO EN VIVO ==================== -->
+    <section class="design-system-section" id="sistema-de-diseno" aria-labelledby="design-system-title">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="ds-header-block">
+          <div class="ds-badge-row">
+            <span class="ds-badge-pill pill-secondary">
+              <span class="live-dot" aria-hidden="true"></span>
+              v2.4.0 Live Tokens
+            </span>
+            <span class="ds-badge-pill pill-primary">WCAG 2.1 AA Compliant</span>
+          </div>
+
+          <div class="ds-header-split">
+            <div class="ds-header-text">
+              <h2 id="design-system-title" class="section-title">
+                Sistema de Diseño &amp; Guía de Estilos
+              </h2>
+              <p class="section-description">
+                Especificaciones de tokens visuales, jerarquía tipográfica, espaciado y biblioteca de componentes base para garantizar consistencia y accesibilidad.
+              </p>
+            </div>
+
+            <!-- Metric Badges Row -->
+            <div class="ds-metrics-box" role="region" aria-label="Métricas del sistema de diseño">
+              <div class="ds-metric-item">
+                <span class="metric-caption">Ratio Primario</span>
+                <span class="metric-num text-secondary">14.5:1</span>
+              </div>
+              <div class="metric-divider" aria-hidden="true"></div>
+              <div class="ds-metric-item">
+                <span class="metric-caption">Base Grid</span>
+                <span class="metric-num text-primary">8pt Strict</span>
+              </div>
+              <div class="metric-divider" aria-hidden="true"></div>
+              <div class="ds-metric-item">
+                <span class="metric-caption">Tokens</span>
+                <span class="metric-num">48 Core</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBSECTION 1: COLOR TOKENS -->
+        <div class="ds-submodule" id="tokens-color">
+          <div class="submodule-header">
+            <span class="section-tag" aria-hidden="true">01 / FOUNDATION</span>
+            <h3 class="submodule-title">Paleta de Colores (Color Tokens)</h3>
+            <p class="submodule-desc">
+              Mapeo sistemático de tintas semánticas optimizadas para alto contraste, iluminación visual en modo oscuro y balance cromático.
+            </p>
+          </div>
+
+          <!-- Color Category 1: Primary Accent -->
+          <div class="color-family-block">
+            <h4 class="color-family-title family-primary">
+              <span class="material-symbols-outlined family-icon" aria-hidden="true">palette</span>
+              <span>Primary Indigo / Violet Series</span>
+            </h4>
+
+            <div class="swatches-grid swatches-3-col">
+              <!-- Swatch: 500 -->
+              <div class="swatch-card">
+                <div class="swatch-visual" style="background-color: #6366f1;">
+                  <span class="swatch-badge">Primary 500</span>
+                  <button
+                    class="btn-copy-token"
+                    data-copy="#6366F1"
+                    type="button"
+                    aria-label="Copiar código hexadecimal #6366F1"
+                  >
+                    <span class="material-symbols-outlined copy-icon" aria-hidden="true">content_copy</span>
+                    <span>Copy</span>
+                  </button>
+                </div>
+                <div class="swatch-info">
+                  <div class="swatch-codes">
+                    <span class="code-hex">HEX: #6366F1</span>
+                    <span class="code-rgb">RGB(99, 102, 241)</span>
+                  </div>
+                  <p class="swatch-usage">Acción principal, CTAs dominantes y anillos de foco.</p>
+                </div>
+              </div>
+
+              <!-- Swatch: 600 -->
+              <div class="swatch-card">
+                <div class="swatch-visual" style="background-color: #4f46e5;">
+                  <span class="swatch-badge">Primary 600</span>
+                  <button
+                    class="btn-copy-token"
+                    data-copy="#4F46E5"
+                    type="button"
+                    aria-label="Copiar código hexadecimal #4F46E5"
+                  >
+                    <span class="material-symbols-outlined copy-icon" aria-hidden="true">content_copy</span>
+                    <span>Copy</span>
+                  </button>
+                </div>
+                <div class="swatch-info">
+                  <div class="swatch-codes">
+                    <span class="code-hex">HEX: #4F46E5</span>
+                    <span class="code-rgb">RGB(79, 70, 229)</span>
+                  </div>
+                  <p class="swatch-usage">Estado Hover en CTAs primarios e interacciones de pulsación.</p>
+                </div>
+              </div>
+
+              <!-- Swatch: 400 -->
+              <div class="swatch-card">
+                <div class="swatch-visual" style="background-color: #818cf8;">
+                  <span class="swatch-badge">Primary 400</span>
+                  <button
+                    class="btn-copy-token"
+                    data-copy="#818CF8"
+                    type="button"
+                    aria-label="Copiar código hexadecimal #818CF8"
+                  >
+                    <span class="material-symbols-outlined copy-icon" aria-hidden="true">content_copy</span>
+                    <span>Copy</span>
+                  </button>
+                </div>
+                <div class="swatch-info">
+                  <div class="swatch-codes">
+                    <span class="code-hex">HEX: #818CF8</span>
+                    <span class="code-rgb">RGB(129, 140, 248)</span>
+                  </div>
+                  <p class="swatch-usage">Insignias sutiles, estados activos en textos y glifos lumínicos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Color Category 2: Secondary & Semantic -->
+          <div class="color-family-block">
+            <h4 class="color-family-title family-secondary">
+              <span class="material-symbols-outlined family-icon" aria-hidden="true">auto_awesome</span>
+              <span>Secondary Accent &amp; System Status</span>
+            </h4>
+
+            <div class="swatches-grid swatches-3-col">
+              <!-- Swatch: Cyan 500 -->
+              <div class="swatch-card">
+                <div class="swatch-visual" style="background-color: #06b6d4;">
+                  <span class="swatch-badge">Cyan 500</span>
+                  <button
+                    class="btn-copy-token"
+                    data-copy="#06B6D4"
+                    type="button"
+                    aria-label="Copiar código hexadecimal #06B6D4"
+                  >
+                    <span class="material-symbols-outlined copy-icon" aria-hidden="true">content_copy</span>
+                    <span>Copy</span>
+                  </button>
+                </div>
+                <div class="swatch-info">
+                  <div class="swatch-codes">
+                    <span class="code-hex">HEX: #06B6D4</span>
+                    <span class="code-rgb">RGB(6, 182, 212)</span>
+                  </div>
+                  <p class="swatch-usage">Acento secundario, telemetry charts y glow focal.</p>
+                </div>
+              </div>
+
+              <!-- Swatch: Emerald 500 -->
+              <div class="swatch-card">
+                <div class="swatch-visual" style="background-color: #10b981;">
+                  <span class="swatch-badge">Emerald 500</span>
+                  <button
+                    class="btn-copy-token"
+                    data-copy="#10B981"
+                    type="button"
+                    aria-label="Copiar código hexadecimal #10B981"
+                  >
+                    <span class="material-symbols-outlined copy-icon" aria-hidden="true">content_copy</span>
+                    <span>Copy</span>
+                  </button>
+                </div>
+                <div class="swatch-info">
+                  <div class="swatch-codes">
+                    <span class="code-hex">HEX: #10B981</span>
+                    <span class="code-rgb">RGB(16, 185, 129)</span>
+                  </div>
+                  <p class="swatch-usage">Disponibilidad en vivo, validación exitosa y uptime.</p>
+                </div>
+              </div>
+
+              <!-- Swatch: Amber 500 -->
+              <div class="swatch-card">
+                <div class="swatch-visual" style="background-color: #f59e0b;">
+                  <span class="swatch-badge">Amber 500</span>
+                  <button
+                    class="btn-copy-token"
+                    data-copy="#F59E0B"
+                    type="button"
+                    aria-label="Copiar código hexadecimal #F59E0B"
+                  >
+                    <span class="material-symbols-outlined copy-icon" aria-hidden="true">content_copy</span>
+                    <span>Copy</span>
+                  </button>
+                </div>
+                <div class="swatch-info">
+                  <div class="swatch-codes">
+                    <span class="code-hex">HEX: #F59E0B</span>
+                    <span class="code-rgb">RGB(245, 158, 11)</span>
+                  </div>
+                  <p class="swatch-usage">Estado ocupado temporal, advertencias y avisos de carga.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Color Category 3: Surfaces & Elevations -->
+          <div class="color-family-block">
+            <h4 class="color-family-title">
+              <span class="material-symbols-outlined family-icon" aria-hidden="true">layers</span>
+              <span>Surface &amp; Background Elevations</span>
+            </h4>
+
+            <div class="swatches-grid swatches-4-col">
+              <div class="swatch-card">
+                <div class="swatch-visual-compact" style="background-color: #0b0f19;">
+                  <span class="swatch-badge">Canvas Base</span>
+                </div>
+                <div class="swatch-info-compact">
+                  <span class="code-hex">#0B0F19</span>
+                  <p class="swatch-usage">Fondo general L0</p>
+                </div>
+              </div>
+
+              <div class="swatch-card">
+                <div class="swatch-visual-compact" style="background-color: #111827;">
+                  <span class="swatch-badge">Surface Low</span>
+                </div>
+                <div class="swatch-info-compact">
+                  <span class="code-hex">#111827</span>
+                  <p class="swatch-usage">Secciones secundarias L1</p>
+                </div>
+              </div>
+
+              <div class="swatch-card">
+                <div class="swatch-visual-compact" style="background-color: #1f2937;">
+                  <span class="swatch-badge">Surface Container</span>
+                </div>
+                <div class="swatch-info-compact">
+                  <span class="code-hex">#1F2937</span>
+                  <p class="swatch-usage">Tarjetas y paneles L2</p>
+                </div>
+              </div>
+
+              <div class="swatch-card">
+                <div class="swatch-visual-compact" style="background-color: #374151;">
+                  <span class="swatch-badge">Surface Stroke</span>
+                </div>
+                <div class="swatch-info-compact">
+                  <span class="code-hex">#374151</span>
+                  <p class="swatch-usage">Delimitadores y bordes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBSECTION 2: TYPOGRAPHY HIERARCHY -->
+        <div class="ds-submodule" id="tokens-typography">
+          <div class="submodule-header">
+            <span class="section-tag" aria-hidden="true">02 / TYPOGRAPHY</span>
+            <h3 class="submodule-title">Jerarquía Tipográfica (Type Scale)</h3>
+            <p class="submodule-desc">
+              Construido con <strong class="text-primary">Plus Jakarta Sans</strong> para titulares, <strong class="text-primary">Inter</strong> para cuerpo extendido y <strong class="text-secondary">JetBrains Mono</strong> para especificaciones y bloques de código.
+            </p>
+          </div>
+
+          <div class="type-scale-panel">
+            <!-- H1 Specimen -->
+            <div class="type-specimen-row">
+              <div class="specimen-content">
+                <span class="specimen-meta">Display / H1 • Plus Jakarta Sans Bold • 48px / 3rem</span>
+                <p class="specimen-h1">Construyendo el futuro web</p>
+              </div>
+              <span class="specimen-badge">leading: 1.15 | -0.03em</span>
+            </div>
+
+            <!-- H2 Specimen -->
+            <div class="type-specimen-row">
+              <div class="specimen-content">
+                <span class="specimen-meta">Heading 2 • Plus Jakarta Sans SemiBold • 36px / 2.25rem</span>
+                <p class="specimen-h2">Sección de Proyectos y Casos</p>
+              </div>
+              <span class="specimen-badge">leading: 1.25 | -0.025em</span>
+            </div>
+
+            <!-- H3 Specimen -->
+            <div class="type-specimen-row">
+              <div class="specimen-content">
+                <span class="specimen-meta">Heading 3 • Plus Jakarta Sans SemiBold • 28px / 1.75rem</span>
+                <p class="specimen-h3">Cards de Componentes Modulares</p>
+              </div>
+              <span class="specimen-badge">leading: 1.3 | -0.02em</span>
+            </div>
+
+            <!-- H4 Specimen -->
+            <div class="type-specimen-row">
+              <div class="specimen-content">
+                <span class="specimen-meta">Heading 4 • Plus Jakarta Sans Medium • 22px / 1.375rem</span>
+                <p class="specimen-h4">Subtítulos y Bloques de Métricas</p>
+              </div>
+              <span class="specimen-badge">leading: 1.4 | -0.015em</span>
+            </div>
+
+            <!-- H6 Overline Specimen -->
+            <div class="type-specimen-row">
+              <div class="specimen-content">
+                <span class="specimen-meta">Heading 6 / Overline • JetBrains Mono SemiBold • 14px</span>
+                <p class="specimen-overline">// OVERLINE / TAGS / SYSTEM_SPEC</p>
+              </div>
+              <span class="specimen-badge">tracking: +0.06em</span>
+            </div>
+
+            <!-- Body Comparison Grid -->
+            <div class="body-comparison-grid">
+              <div class="body-card">
+                <span class="specimen-meta text-secondary">Body Regular • Inter • 16px / 1.0rem</span>
+                <p class="body-sample">
+                  Diseñamos y desarrollamos arquitecturas web de máximo rendimiento, fusionando microinteracciones accesibles con un rendimiento técnico inflexible.
+                </p>
+              </div>
+              <div class="body-card">
+                <span class="specimen-meta text-secondary">Body Small / Caption • Inter • 13px &amp; 12px</span>
+                <p class="body-sample-sm">
+                  Texto secundario reservado para metadatos descriptivos, pies de imagen y notas técnicas complementarias bajo WCAG 2.1 AA.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBSECTION 3: SPACING SCALE & GRIDS -->
+        <div class="ds-submodule" id="tokens-spacing">
+          <div class="submodule-header">
+            <span class="section-tag" aria-hidden="true">03 / LAYOUT &amp; RHYTHM</span>
+            <h3 class="submodule-title">Escala de Espaciados &amp; Retícula</h3>
+            <p class="submodule-desc">
+              Construido sobre múltiplos de 8pt geométricos. Provee coherencia en márgenes internos, márgenes externos y separadores estructurales.
+            </p>
+          </div>
+
+          <div class="spacing-layout-grid">
+            <!-- Visual Scale Bars -->
+            <div class="spacing-card">
+              <h4 class="subcard-title">
+                <span class="material-symbols-outlined text-primary" aria-hidden="true">straighten</span>
+                <span>Tokens de Espaciado (8pt)</span>
+              </h4>
+
+              <div class="spacing-bars-list">
+                <div class="space-row">
+                  <span class="space-label">xs • 4px</span>
+                  <div class="space-bar w-4px"></div>
+                  <span class="space-unit">0.25rem</span>
+                </div>
+                <div class="space-row">
+                  <span class="space-label">sm • 8px</span>
+                  <div class="space-bar w-8px"></div>
+                  <span class="space-unit">0.50rem</span>
+                </div>
+                <div class="space-row">
+                  <span class="space-label">md • 16px</span>
+                  <div class="space-bar w-16px bar-primary"></div>
+                  <span class="space-unit">1.00rem</span>
+                </div>
+                <div class="space-row">
+                  <span class="space-label">lg • 24px</span>
+                  <div class="space-bar w-24px bar-primary"></div>
+                  <span class="space-unit">1.50rem</span>
+                </div>
+                <div class="space-row">
+                  <span class="space-label">xl • 32px</span>
+                  <div class="space-bar w-32px bar-secondary"></div>
+                  <span class="space-unit">2.00rem</span>
+                </div>
+                <div class="space-row">
+                  <span class="space-label">2xl • 48px</span>
+                  <div class="space-bar w-48px bar-secondary"></div>
+                  <span class="space-unit">3.00rem</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grid Specimen Card -->
+            <div class="grid-specimen-card">
+              <h4 class="subcard-title">
+                <span class="material-symbols-outlined text-secondary" aria-hidden="true">grid_4x4</span>
+                <span>Arquitectura de Retícula (12 Cols)</span>
+              </h4>
+              <p class="grid-spec-text">
+                Retícula simétrica en Desktop con márgenes de seguridad de <code class="inline-code">2rem (32px)</code> y gutter fluido de <code class="inline-code">1.5rem (24px)</code>.
+              </p>
+
+              <!-- Visual 12-Col Preview -->
+              <div class="mini-grid-preview" aria-hidden="true">
+                <div class="col-bar"></div>
+                <div class="col-bar"></div>
+                <div class="col-bar"></div>
+                <div class="col-bar"></div>
+                <div class="col-bar"></div>
+                <div class="col-bar"></div>
+                <div class="col-bar"></div>
+                <div class="col-bar"></div>
+                <div class="col-bar"></div>
+                <div class="col-bar"></div>
+                <div class="col-bar"></div>
+                <div class="col-bar"></div>
+              </div>
+
+              <!-- Metric Pills -->
+              <div class="grid-metric-pills">
+                <div class="pill-item">
+                  <span class="pill-caption">Columns</span>
+                  <span class="pill-val">12 Fluid</span>
+                </div>
+                <div class="pill-item">
+                  <span class="pill-caption">Gutter</span>
+                  <span class="pill-val">24px</span>
+                </div>
+                <div class="pill-item">
+                  <span class="pill-caption">Max-Width</span>
+                  <span class="pill-val text-secondary">1200px</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBSECTION 4: COMPONENT LIBRARY -->
+        <div class="ds-submodule" id="tokens-components">
+          <div class="submodule-header">
+            <span class="section-tag" aria-hidden="true">04 / UI BUILDING BLOCKS</span>
+            <h3 class="submodule-title">Biblioteca de Componentes Base</h3>
+            <p class="submodule-desc">
+              Catálogo exhaustivo de componentes atomizados y moleculares con especificaciones interactivas de accesibilidad y foco.
+            </p>
+          </div>
+
+          <!-- Component Block 1: Buttons -->
+          <div class="component-demo-box">
+            <div class="component-box-header">
+              <h4 class="component-box-title">
+                <span class="material-symbols-outlined text-primary" aria-hidden="true">smart_button</span>
+                <span>Botones &amp; Acciones</span>
+              </h4>
+              <span class="component-box-meta">Interactive States</span>
+            </div>
+
+            <div class="component-demo-grid">
+              <!-- Primary Col -->
+              <div class="demo-subcol">
+                <span class="demo-tag text-primary">Botón Primario</span>
+                <button class="btn btn-primary w-full" type="button">Default Action</button>
+                <button class="btn btn-primary w-full btn-hover-sim" type="button">Hover State</button>
+                <button class="btn btn-primary w-full btn-disabled-sim" disabled type="button">Disabled State</button>
+              </div>
+
+              <!-- Secondary Col -->
+              <div class="demo-subcol">
+                <span class="demo-tag text-secondary">Botón Secundario</span>
+                <button class="btn btn-secondary w-full" type="button">Secondary Glass</button>
+                <button class="btn btn-secondary w-full btn-hover-sim" type="button">Active State</button>
+                <button class="btn btn-secondary w-full btn-disabled-sim" disabled type="button">Disabled Action</button>
+              </div>
+
+              <!-- Utility / Icon Hub -->
+              <div class="demo-subcol">
+                <span class="demo-tag">Área Táctil (44x44px)</span>
+                <div class="icon-utility-hub">
+                  <button class="icon-hub-btn" aria-label="Código fuente" type="button">
+                    <span class="material-symbols-outlined">code</span>
+                  </button>
+                  <button class="icon-hub-btn" aria-label="Modo de color" type="button">
+                    <span class="material-symbols-outlined text-primary">dark_mode</span>
+                  </button>
+                  <button class="icon-hub-btn" aria-label="Compartir" type="button">
+                    <span class="material-symbols-outlined text-secondary">share</span>
+                  </button>
+                  <button class="icon-hub-btn" aria-label="Guardar" type="button">
+                    <span class="material-symbols-outlined">bookmark</span>
+                  </button>
+                </div>
+                <p class="demo-note">Cumple criterio WCAG 2.5.5 Target Size (mínimo 44x44px).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Component Block 2: Form Inputs -->
+          <div class="component-demo-box">
+            <div class="component-box-header">
+              <h4 class="component-box-title">
+                <span class="material-symbols-outlined text-primary" aria-hidden="true">edit_note</span>
+                <span>Formularios &amp; Entradas</span>
+              </h4>
+              <span class="component-box-meta">Form Field States</span>
+            </div>
+
+            <div class="component-demo-grid">
+              <div class="demo-subcol">
+                <label class="demo-field-label" for="spec-input-default">INPUT NORMAL / DEFAULT</label>
+                <input
+                  class="demo-input"
+                  id="spec-input-default"
+                  type="text"
+                  placeholder="nombre@dominio.com"
+                >
+                <span class="demo-note">Estado en reposo con placeholder contrastado.</span>
+              </div>
+
+              <div class="demo-subcol">
+                <label class="demo-field-label text-primary" for="spec-input-focus">INPUT ACTIVO / FOCUS RING</label>
+                <input
+                  class="demo-input input-focused-spec"
+                  id="spec-input-focus"
+                  type="text"
+                  value="elena.vance@studio.design"
+                >
+                <span class="demo-note text-primary">Anillo de foco 2px accesible.</span>
+              </div>
+
+              <div class="demo-subcol">
+                <label class="demo-field-label text-error" for="spec-input-error">INPUT ERROR / VALIDACIÓN</label>
+                <div class="input-error-wrapper">
+                  <input
+                    class="demo-input input-error-spec"
+                    id="spec-input-error"
+                    type="text"
+                    value="correo_invalido.com"
+                    aria-invalid="true"
+                    aria-describedby="error-hint-demo"
+                  >
+                  <span class="material-symbols-outlined error-icon-spec" aria-hidden="true">error</span>
+                </div>
+                <span class="demo-note text-error" id="error-hint-demo">
+                  Ingrese un correo corporativo válido.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Component Block 3: Badges & Live Status -->
+          <div class="component-demo-box">
+            <div class="component-box-header">
+              <h4 class="component-box-title">
+                <span class="material-symbols-outlined text-primary" aria-hidden="true">sell</span>
+                <span>Badges, Chips &amp; Status</span>
+              </h4>
+              <span class="component-box-meta">Metadata Tokens</span>
+            </div>
+
+            <div class="badges-status-split">
+              <!-- Tech Badges -->
+              <div class="badges-panel">
+                <span class="demo-tag text-secondary">Tech Badges (Solid &amp; Subtle)</span>
+                <div class="badge-cluster">
+                  <span class="badge-solid bg-primary text-on-primary">REACT</span>
+                  <span class="badge-solid bg-secondary text-on-secondary">TYPESCRIPT</span>
+                  <span class="badge-solid bg-tertiary text-on-tertiary">NEXT.JS</span>
+                </div>
+                <div class="badge-cluster">
+                  <span class="badge-subtle badge-subtle-primary">REACT</span>
+                  <span class="badge-subtle badge-subtle-secondary">TYPESCRIPT</span>
+                  <span class="badge-subtle badge-subtle-tertiary">NEXT.JS</span>
+                </div>
+              </div>
+
+              <!-- Status Indicators -->
+              <div class="status-panel">
+                <span class="demo-tag text-primary">Indicadores de Disponibilidad</span>
+                <div class="status-row">
+                  <div class="status-chip chip-avail">
+                    <span class="live-dot dot-avail" aria-hidden="true"></span>
+                    <span>DISPONIBLE (Q3 / Q4)</span>
+                  </div>
+                  <span class="status-desc">Aceptando contratos</span>
+                </div>
+
+                <div class="status-row">
+                  <div class="status-chip chip-busy">
+                    <span class="live-dot dot-busy" aria-hidden="true"></span>
+                    <span>OCUPADO TEMPORAL</span>
+                  </div>
+                  <span class="status-desc">En entrega de Sprint</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessible Live Region Announcer for screen readers -->
+    <div id="a11y-announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
   </main>
 </body>
 </html>
