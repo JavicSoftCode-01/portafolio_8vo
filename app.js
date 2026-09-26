@@ -122,6 +122,111 @@
   };
 
   /**
+   * Profile Dropdown & Dynamic Design System Visibility Controller
+   * Handles avatar menu toggle, accessibility states, and navbar dynamic item revelation
+   */
+  const initProfileDropdown = () => {
+    const profileBtn = document.getElementById('profile-menu-btn');
+    const profileMenu = document.getElementById('profile-dropdown-menu');
+    const designSystemNavItem = document.getElementById('nav-item-design-system');
+    const dropdownDesignSystemLink = document.getElementById('dropdown-link-design-system');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const brandLink = document.querySelector('.brand-link');
+
+    if (!profileBtn || !profileMenu) return;
+
+    const setDropdownState = (isOpen) => {
+      profileBtn.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) {
+        profileMenu.removeAttribute('hidden');
+      } else {
+        profileMenu.setAttribute('hidden', '');
+      }
+    };
+
+    profileBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isExpanded = profileBtn.getAttribute('aria-expanded') === 'true';
+      setDropdownState(!isExpanded);
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (event) => {
+      if (!profileMenu.contains(event.target) && !profileBtn.contains(event.target)) {
+        setDropdownState(false);
+      }
+    });
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && profileBtn.getAttribute('aria-expanded') === 'true') {
+        setDropdownState(false);
+        profileBtn.focus();
+      }
+    });
+
+    // Handle click on Design System in dropdown
+    if (dropdownDesignSystemLink) {
+      dropdownDesignSystemLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        setDropdownState(false);
+
+        // Make Design System visible in navbar
+        if (designSystemNavItem) {
+          designSystemNavItem.style.display = '';
+        }
+
+        // Set active link visually in nav
+        navLinks.forEach((link) => {
+          if (link.getAttribute('href') === '#sistema-de-diseno') {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.classList.remove('active');
+            link.removeAttribute('aria-current');
+          }
+        });
+
+        // Smooth scroll to section
+        const targetSection = document.getElementById('sistema-de-diseno');
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: AppState.reducedMotion ? 'auto' : 'smooth',
+            block: 'start'
+          });
+          if (!targetSection.hasAttribute('tabindex')) {
+            targetSection.setAttribute('tabindex', '-1');
+          }
+          targetSection.focus({ preventScroll: true });
+
+          if (history.pushState) {
+            history.pushState(null, '', '#sistema-de-diseno');
+          } else {
+            window.location.hash = '#sistema-de-diseno';
+          }
+        }
+      });
+    }
+
+    // Hide Design System from navbar when any other link or logo is clicked
+    const hideDesignSystem = () => {
+      if (designSystemNavItem) {
+        designSystemNavItem.style.display = 'none';
+      }
+    };
+
+    navLinks.forEach((link) => {
+      if (link.getAttribute('href') !== '#sistema-de-diseno') {
+        link.addEventListener('click', hideDesignSystem);
+      }
+    });
+
+    if (brandLink) {
+      brandLink.addEventListener('click', hideDesignSystem);
+    }
+  };
+
+  /**
    * Hero Visual Microinteractions
    * Adds subtle 3D tilt perspective and parallax on floating chips
    * Fully bypasses animation if user prefers reduced motion
@@ -624,7 +729,18 @@
 
     if (!sections.length || !navLinks.length) return;
 
+    const designSystemNavItem = document.getElementById('nav-item-design-system');
+
     const setActiveLink = (currentId) => {
+      // Dynamic visibility of Sistema de Diseño: visible ONLY when user is at #sistema-de-diseno
+      if (designSystemNavItem) {
+        if (currentId === 'sistema-de-diseno') {
+          designSystemNavItem.style.display = '';
+        } else {
+          designSystemNavItem.style.display = 'none';
+        }
+      }
+
       navLinks.forEach((link) => {
         const href = link.getAttribute('href');
         const isMatch = href === `#${currentId}`;
@@ -698,6 +814,7 @@
     initMotionPreferences();
     initThemeController();
     initMobileNavigation();
+    initProfileDropdown();
     initHeroMicrointeractions();
     initMetricsCounter();
     initSkillsProgressBars();

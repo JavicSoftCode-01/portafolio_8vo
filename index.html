@@ -108,7 +108,7 @@
           <li class="nav-item">
             <a href="#proyectos" class="nav-link">Proyectos</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item nav-item-design-system" id="nav-item-design-system" style="display: none;">
             <a href="#sistema-de-diseno" class="nav-link">Sistema de Diseño</a>
           </li>
           <li class="nav-item">
@@ -126,12 +126,33 @@
           <span class="material-symbols-outlined theme-icon icon-dark" aria-hidden="true">dark_mode</span>
         </button>
 
-        <!-- Direct CTA -->
-        <a href="#contacto" class="btn-talk">Hablemos</a>
+        <!-- Professional Role Tag (Developer JSC) -->
+        <span class="nav-developer-label">Developer JSC</span>
 
-        <!-- Profile Avatar -->
-        <img src="assets/images/profile.jpg" alt="Foto de perfil de Eduardo Javier Quinteros Pacheco (JSC)"
-          class="profile-avatar" width="36" height="36" loading="eager">
+        <!-- Profile Avatar & Dropdown Menu -->
+        <div class="profile-dropdown-wrapper" id="profile-dropdown-wrapper">
+          <button id="profile-menu-btn" class="profile-avatar-btn" type="button" aria-expanded="false"
+            aria-haspopup="true" aria-label="Abrir menú de perfil y sistema de diseño">
+            <img src="assets/images/profile.jpg" alt="Foto de perfil de Eduardo Javier Quinteros Pacheco (JSC)"
+              class="profile-avatar" width="36" height="36" loading="eager">
+          </button>
+
+          <div class="profile-dropdown-menu" id="profile-dropdown-menu" role="menu" aria-label="Menú de perfil" hidden>
+            <div class="dropdown-header">
+              <span class="dropdown-title">JAVICSOFTCODE</span>
+              <span class="dropdown-subtitle">Eduardo Quinteros</span>
+            </div>
+            <div class="dropdown-divider"></div>
+            <ul class="dropdown-list">
+              <li role="none">
+                <a href="#sistema-de-diseno" class="dropdown-item" id="dropdown-link-design-system" role="menuitem">
+                  <span class="material-symbols-outlined dropdown-icon" aria-hidden="true">palette</span>
+                  <span>Sistema de Diseño</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         <!-- Mobile Menu Trigger -->
         <button id="menu-toggle" class="menu-toggle-btn" type="button" aria-expanded="false" aria-controls="primary-nav"
