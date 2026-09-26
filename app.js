@@ -122,6 +122,77 @@
   };
 
   /**
+   * Hero Visual Microinteractions
+   * Adds subtle 3D tilt perspective and parallax on floating chips
+   * Fully bypasses animation if user prefers reduced motion
+   */
+  const initHeroMicrointeractions = () => {
+    const heroVisual = document.getElementById('hero-visual-card');
+    if (!heroVisual) return;
+
+    const portraitCard = heroVisual.querySelector('.portrait-card');
+    const chipExperience = heroVisual.querySelector('.chip-experience');
+    const chipDiscipline = heroVisual.querySelector('.chip-discipline');
+
+    if (!portraitCard) return;
+
+    let isHovering = false;
+    let rafId = null;
+
+    const resetTransformations = () => {
+      portraitCard.style.transform = '';
+      if (chipExperience) chipExperience.style.transform = '';
+      if (chipDiscipline) chipDiscipline.style.transform = '';
+    };
+
+    heroVisual.addEventListener('mouseenter', () => {
+      if (AppState.reducedMotion) return;
+      isHovering = true;
+    });
+
+    heroVisual.addEventListener('mousemove', (event) => {
+      if (AppState.reducedMotion || !isHovering) return;
+
+      if (rafId) cancelAnimationFrame(rafId);
+
+      rafId = requestAnimationFrame(() => {
+        const rect = heroVisual.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -4; // Max -4 to 4 deg
+        const rotateY = ((x - centerX) / centerX) * 4;  // Max -4 to 4 deg
+
+        portraitCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+
+        const shiftX = ((x - centerX) / centerX) * 6;
+        const shiftY = ((y - centerY) / centerY) * 6;
+
+        if (chipExperience) {
+          chipExperience.style.transform = `translate3d(${-shiftX.toFixed(1)}px, ${-shiftY.toFixed(1)}px, 12px)`;
+        }
+        if (chipDiscipline) {
+          chipDiscipline.style.transform = `translate3d(${shiftX.toFixed(1)}px, ${shiftY.toFixed(1)}px, 12px)`;
+        }
+      });
+    });
+
+    heroVisual.addEventListener('mouseleave', () => {
+      isHovering = false;
+      if (rafId) cancelAnimationFrame(rafId);
+      resetTransformations();
+    });
+
+    // Reset immediately if reduced motion is toggled at system level
+    window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+      if (e.matches) resetTransformations();
+    });
+  };
+
+  /**
    * Main Application Lifecycle Bootstrap
    * Safe execution guaranteed after DOM is fully parsed
    */
@@ -129,6 +200,7 @@
     initMotionPreferences();
     initThemeController();
     initMobileNavigation();
+    initHeroMicrointeractions();
     // Subsequent component controllers will be registered here across phases
   };
 
@@ -139,3 +211,4 @@
     initApp();
   }
 })();
+
