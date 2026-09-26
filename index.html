@@ -70,6 +70,87 @@
   <!-- A11y Navigation Skip Link -->
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
+  <!-- Header Landmark -->
+  <header role="banner" class="site-header">
+    <div class="header-inner container">
+      <!-- Monogram & Brand Identity -->
+      <div class="brand-group">
+        <a href="#inicio" class="brand-link" aria-label="Elena Vance — Ir al inicio">
+          <span class="monogram-box" aria-hidden="true">EV</span>
+          <span class="brand-name">
+            Elena Vance <span class="brand-subtitle">— Dev &amp; Design</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Semantic Primary Navigation -->
+      <nav id="primary-nav" class="primary-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#inicio" class="nav-link active" aria-current="page">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+          </li>
+          <li class="nav-item">
+            <a href="#habilidades" class="nav-link">Habilidades</a>
+          </li>
+          <li class="nav-item">
+            <a href="#proyectos" class="nav-link">Proyectos</a>
+          </li>
+          <li class="nav-item">
+            <a href="#sistema-de-diseno" class="nav-link">Sistema de Diseño</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contacto" class="nav-link">Contacto</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Utility Actions & Controls -->
+      <div class="header-actions">
+        <!-- Theme Mode Switcher -->
+        <button
+          id="theme-toggle"
+          class="theme-toggle-btn"
+          type="button"
+          aria-label="Cambiar tema de color"
+          aria-pressed="true"
+          title="Alternar entre modo oscuro y claro"
+        >
+          <span class="material-symbols-outlined theme-icon icon-light" aria-hidden="true">light_mode</span>
+          <span class="material-symbols-outlined theme-icon icon-dark" aria-hidden="true">dark_mode</span>
+        </button>
+
+        <!-- Direct CTA -->
+        <a href="#contacto" class="btn-talk">Hablemos</a>
+
+        <!-- Profile Avatar -->
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZAsgMVIWYfdyDtQEuJWvDrTxnycZxAjGQir4k_1kAEELhWjIychHxwNqVW0CYusLWwB0dmd6DZ7NsmzI_2g_Ym0_0WC9YNc-Ujq6LKsTtu3eOl-jQ4acRpNwZeZEe1rVnGs48x5_re9l9aXLQ29A_72jWDkAnFYJcmetEL0GvDIc-eMmhvbItMKOEQvCqXrZNyDq7ILubwwrBm6d73D2O628h5eqlWOm2R5wVbrZhBzquZNoq4ppAFg"
+          alt="Foto de perfil de Elena Vance"
+          class="profile-avatar"
+          width="36"
+          height="36"
+          loading="eager"
+        >
+
+        <!-- Mobile Menu Trigger -->
+        <button
+          id="menu-toggle"
+          class="menu-toggle-btn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Abrir menú de navegación"
+        >
+          <span class="material-symbols-outlined menu-icon-open" aria-hidden="true">menu</span>
+          <span class="material-symbols-outlined menu-icon-close" aria-hidden="true">close</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
   <!-- Main Landmark Anchor -->
   <main id="main-content" tabindex="-1">
     <!-- Componentes de fases subsiguientes se montarán aquí -->
