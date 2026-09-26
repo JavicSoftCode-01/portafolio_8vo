@@ -252,6 +252,59 @@
   };
 
   /**
+   * Sequential Progress Bars Animation (Habilidades)
+   * Staggered width transition when skills section enters viewport
+   * Instantly fills widths if prefers-reduced-motion is active
+   */
+  const initSkillsProgressBars = () => {
+    const skillsSection = document.getElementById('habilidades');
+    const progressFills = document.querySelectorAll('.progress-fill[data-width]');
+    if (!skillsSection || !progressFills.length) return;
+
+    const fillBars = () => {
+      progressFills.forEach((fill, index) => {
+        const targetWidth = fill.getAttribute('data-width') || '0';
+
+        if (AppState.reducedMotion) {
+          fill.style.transition = 'none';
+          fill.style.width = `${targetWidth}%`;
+        } else {
+          setTimeout(() => {
+            fill.style.width = `${targetWidth}%`;
+          }, index * 75); // Staggered 75ms cascade
+        }
+      });
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              fillBars();
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      observer.observe(skillsSection);
+    } else {
+      fillBars();
+    }
+
+    window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+      if (e.matches) {
+        progressFills.forEach((fill) => {
+          fill.style.transition = 'none';
+          fill.style.width = `${fill.getAttribute('data-width') || '0'}%`;
+        });
+      }
+    });
+  };
+
+  /**
    * Main Application Lifecycle Bootstrap
    * Safe execution guaranteed after DOM is fully parsed
    */
@@ -261,6 +314,7 @@
     initMobileNavigation();
     initHeroMicrointeractions();
     initMetricsCounter();
+    initSkillsProgressBars();
     // Subsequent component controllers will be registered here across phases
   };
 
@@ -271,5 +325,6 @@
     initApp();
   }
 })();
+
 
 

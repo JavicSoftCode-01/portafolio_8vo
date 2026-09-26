@@ -1150,5 +1150,214 @@ html:not(.dark) .bento-header {
   font-style: italic;
 }
 
+/* --- 9. Habilidades (Skills Matrix) Section Component --- */
+.skills-section {
+  position: relative;
+  background-color: var(--color-surface);
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+}
+
+@media (min-width: 1024px) {
+  .skills-section {
+    padding-top: var(--space-5xl);
+    padding-bottom: var(--space-5xl);
+  }
+}
+
+.section-description {
+  font-family: var(--font-body);
+  font-size: var(--text-body-md);
+  line-height: var(--text-body-md-lh);
+  color: var(--color-on-surface-variant);
+  max-width: var(--max-width-text);
+  margin-top: var(--space-xs);
+}
+
+/* Responsive 3-Column Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-3xl);
+}
+
+/* Skills Card Shell */
+.skills-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: var(--radius-2xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+html:not(.dark) .skills-card {
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+.skills-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-frontend,
+.card-tooling {
+  background-color: var(--color-surface-container-low);
+}
+
+.card-design {
+  background-color: var(--color-surface-container);
+}
+
+.card-main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card Icon Box */
+.card-icon-box {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.icon-box-primary {
+  background-color: rgba(192, 193, 255, 0.12);
+  color: var(--color-primary);
+}
+
+.icon-box-secondary {
+  background-color: rgba(76, 215, 246, 0.12);
+  color: var(--color-secondary);
+}
+
+.icon-box-tertiary {
+  background-color: rgba(208, 188, 255, 0.12);
+  color: var(--color-tertiary);
+}
+
+.card-category-icon {
+  font-size: 1.5rem;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-headline-sm);
+  font-weight: 600;
+  color: var(--color-on-surface);
+  margin-bottom: var(--space-xs);
+}
+
+.card-description {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  line-height: var(--text-body-sm-lh);
+  color: var(--color-on-surface-variant);
+  margin-bottom: var(--space-lg);
+}
+
+/* Progress Bars Group */
+.progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.progress-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2xs);
+}
+
+.skill-name {
+  font-family: var(--font-code);
+  font-size: var(--text-label-tech);
+  line-height: var(--text-label-tech-lh);
+  color: var(--color-on-surface);
+  font-weight: 500;
+}
+
+.skill-percentage {
+  font-family: var(--font-code);
+  font-size: var(--text-label-tech);
+  line-height: var(--text-label-tech-lh);
+  font-weight: 700;
+}
+
+/* Progress Track & Fill */
+.progress-track {
+  width: 100%;
+  height: 0.375rem; /* 6px */
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-container-highest);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: var(--radius-full);
+  transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fill-primary {
+  background-color: var(--color-primary);
+}
+
+.fill-secondary {
+  background-color: var(--color-secondary);
+}
+
+.fill-tertiary {
+  background-color: var(--color-tertiary);
+}
+
+/* Tech Badges Footer */
+.tech-chips-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+html:not(.dark) .tech-chips-group {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+.tech-chip {
+  display: inline-block;
+  padding: var(--space-3xs) var(--space-xs);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-container-high);
+  color: var(--color-on-surface-variant);
+  font-family: var(--font-code);
+  font-size: var(--text-label-tech);
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.tech-chip:hover {
+  background-color: var(--color-surface-bright);
+  color: var(--color-on-surface);
+}
+
+
 
 
