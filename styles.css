@@ -1547,7 +1547,8 @@ html:not(.dark) .competency-card:hover {
   color: #fb923c;
 }
 
-.icon-box-paradigm {
+.icon-box-paradigm,
+.icon-box-ai {
   background-color: rgba(167, 139, 250, 0.12);
   color: #a78bfa;
 }
@@ -1573,7 +1574,8 @@ html:not(.dark) .icon-box-security {
   color: #ea580c;
 }
 
-html:not(.dark) .icon-box-paradigm {
+html:not(.dark) .icon-box-paradigm,
+html:not(.dark) .icon-box-ai {
   color: #7c3aed;
 }
 
