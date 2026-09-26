@@ -1402,6 +1402,214 @@ html:not(.dark) .tech-chips-group {
   color: var(--color-on-surface);
 }
 
+/* --- Competencias Relevantes Panel --- */
+.competencies-panel {
+  margin-top: var(--space-2xl);
+  padding: var(--space-xl);
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-surface-container-low);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-sm);
+}
+
+html:not(.dark) .competencies-panel {
+  background-color: var(--color-surface-container-low);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+.competencies-header {
+  margin-bottom: var(--space-xl);
+}
+
+.competencies-badge-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-3xs) var(--space-sm);
+  background-color: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-xs);
+}
+
+.competencies-badge-text {
+  font-family: var(--font-code);
+  font-size: var(--text-label-tech);
+  font-weight: 600;
+  color: #4ade80;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+html:not(.dark) .competencies-badge-wrapper {
+  background-color: rgba(22, 163, 74, 0.1);
+  border-color: rgba(22, 163, 74, 0.25);
+}
+
+html:not(.dark) .competencies-badge-text {
+  color: #15803d;
+}
+
+.competencies-title {
+  font-family: var(--font-display);
+  font-size: var(--text-title-md);
+  font-weight: 700;
+  color: var(--color-on-surface);
+  letter-spacing: -0.01em;
+}
+
+.competencies-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .competencies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .competencies-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .competency-card-wide {
+    grid-column: span 3;
+  }
+}
+
+.competency-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-container);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+html:not(.dark) .competency-card {
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.competency-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(192, 193, 255, 0.3);
+  box-shadow: var(--shadow-md);
+}
+
+html:not(.dark) .competency-card:hover {
+  border-color: rgba(79, 70, 229, 0.25);
+  box-shadow: var(--shadow-sm);
+}
+
+.competency-icon-box {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.competency-icon-box .material-symbols-outlined {
+  font-size: 1.35rem;
+}
+
+.icon-box-api {
+  background-color: rgba(192, 193, 255, 0.12);
+  color: var(--color-primary);
+}
+
+.icon-box-async {
+  background-color: rgba(74, 222, 128, 0.12);
+  color: #4ade80;
+}
+
+.icon-box-integrations {
+  background-color: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+}
+
+.icon-box-dataviz {
+  background-color: rgba(244, 114, 182, 0.12);
+  color: #f472b6;
+}
+
+.icon-box-security {
+  background-color: rgba(251, 146, 60, 0.12);
+  color: #fb923c;
+}
+
+.icon-box-paradigm {
+  background-color: rgba(167, 139, 250, 0.12);
+  color: #a78bfa;
+}
+
+.icon-box-tools {
+  background-color: rgba(148, 163, 184, 0.12);
+  color: #94a3b8;
+}
+
+html:not(.dark) .icon-box-async {
+  color: #16a34a;
+}
+
+html:not(.dark) .icon-box-integrations {
+  color: #0284c7;
+}
+
+html:not(.dark) .icon-box-dataviz {
+  color: #db2777;
+}
+
+html:not(.dark) .icon-box-security {
+  color: #ea580c;
+}
+
+html:not(.dark) .icon-box-paradigm {
+  color: #7c3aed;
+}
+
+html:not(.dark) .icon-box-tools {
+  color: #475569;
+}
+
+.competency-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.competency-name {
+  font-family: var(--font-display);
+  font-size: var(--text-title-xs);
+  font-weight: 600;
+  color: var(--color-on-surface);
+  line-height: 1.3;
+}
+
+html:not(.dark) .competency-name {
+  color: var(--color-text-primary);
+}
+
+.competency-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  line-height: var(--text-body-sm-lh);
+  color: var(--color-on-surface-variant);
+}
+
+html:not(.dark) .competency-desc {
+  color: var(--color-text-secondary);
+}
+
 /* --- 10. Proyectos Destacados (Projects) Section Component --- */
 .projects-section {
   position: relative;
