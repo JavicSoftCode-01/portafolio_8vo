@@ -1,6 +1,6 @@
-# Elena Vance — Portfolio & Design System
+# Eduardo Javier Quinteros Pacheco (JSC / JAVICSOFTCODE) — Portfolio & Design System
 
-Plataforma web profesional para exhibición de proyectos de ingeniería frontend y arquitectura de sistemas de diseño. Integra directrices de accesibilidad WCAG 2.2 AA, rendimiento web optimizado y sistema de tokens centralizado.
+Plataforma web profesional para exhibición de proyectos de desarrollo backend, arquitecturas de APIs y soluciones full-stack. Integra directrices de accesibilidad WCAG 2.2 AA, rendimiento optimizado y sistema de tokens centralizado.
 
 ## Arquitectura de Archivos
 

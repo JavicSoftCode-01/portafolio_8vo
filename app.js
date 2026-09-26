@@ -1,5 +1,5 @@
 /**
- * Elena Vance — Application Logic (app.js)
+ * Eduardo Javier Quinteros Pacheco (JSC / JAVICSOFTCODE) — Application Logic (app.js)
  * Clean frontend architecture, scoped execution & A11y motion validation
  */
 
@@ -610,6 +610,76 @@
   };
 
   /**
+   * Section Scroll Spy Controller
+   * Dynamically tracks active section during scroll and updates primary-nav active state
+   */
+  const initScrollSpy = () => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = Array.from(navLinks)
+      .map((link) => {
+        const hash = link.getAttribute('href');
+        return hash && hash.startsWith('#') ? document.querySelector(hash) : null;
+      })
+      .filter(Boolean);
+
+    if (!sections.length || !navLinks.length) return;
+
+    const setActiveLink = (currentId) => {
+      navLinks.forEach((link) => {
+        const href = link.getAttribute('href');
+        const isMatch = href === `#${currentId}`;
+        if (isMatch) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.classList.remove('active');
+          link.removeAttribute('aria-current');
+        }
+      });
+    };
+
+    // IntersectionObserver for performant, accurate section tracking
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -65% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveLink(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => observer.observe(section));
+
+    // Boundary fallback on scroll (top and bottom of page)
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY + window.innerHeight;
+      const fullHeight = document.documentElement.scrollHeight;
+
+      if (window.scrollY < 120) {
+        setActiveLink(sections[0].id);
+      } else if (scrollPos >= fullHeight - 60) {
+        const lastSection = sections[sections.length - 1];
+        if (lastSection) setActiveLink(lastSection.id);
+      }
+    }, { passive: true });
+
+    // Immediate active state assignment upon clicking any nav link
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          setActiveLink(href.substring(1));
+        }
+      });
+    });
+  };
+
+  /**
    * Footer & Dynamic Metadata Controller
    * Synchronizes dynamic year and back-to-top status
    */
@@ -635,6 +705,7 @@
     initTokenClipboard();
     initContactForm();
     initSmoothScroll();
+    initScrollSpy();
     initFooter();
   };
 
